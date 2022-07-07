@@ -36,51 +36,51 @@ def revealDealerHand():
         return dealerHand[0]
     elif len(dealerHand)>2:
         return dealerHand[0],dealerHand[1]
-
-#게임 반복 루프시킨다
-for _ in range(2):#_는 컴퓨터가 코드 컴파일할때 메모리를 조금 절약시켜준다
-    dealCard(dealerHand)
-    dealCard(playerHand)
-#손에 카드가 제대로 들어갔는지 확인 용도
-#print(dealerHand)
-#print(playerHand)
-while playerIn or dealerIn:#player랑 dealer가 들어와있다면
-    print(f"Dealer에게는 {revealDealerHand()}와 x")
-    print(f"당신은 {playerHand}를 가지고 있으며 전체 {total(playerHand)}이다.")
-    if playerIn:#player input
-        stayOrHit=input("1: Stay\n2: Hit\n")#string으로 input
-    if total(dealerHand)>16:#dealer가 deck에서 하나 가져갈지 말지 결정
-        dealerIn=False#dealer stay
-    else:#dealer 손이 16보다 작다면 deck에서 카드 하나 가져간다
-        dealCard(dealerHand)#deck에서 하나 가져간다
-
-    if stayOrHit=='1':#player가 1을 입력(stay)
-        playerIn==False
-    else:#player가 2을 입력(hit)
-        dealCard(playerHand)#player가 deck에서 카드하나 가져간다.
-    #승자 결정, player, dealer 중 누가 21이거나 넘어가면 루프에서 나간다
-    if total(playerHand)>=21:
-        break
-    elif total(dealerHand)>=21:
-        break
-#--------------------------------------------------------------------------
-#승자를 결정한다.
-if total(playerHand)==21:
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("BLACKJACK")
-elif total(dealerHand)==21:
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("Dealer Wins")
-elif total(playerHand)>21:
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("Player Bust")
-elif total(dealerHand)>21:
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("Dealer BUst")
-#player랑 dealer 둘다 자리에 남는다면(stay), 21에 가장 가까운 사람이 승자가 된다.
-elif 21 - total(dealerHand) < 21-total(playerHand):
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("Dealer Wins")
-elif 21 - total(dealerHand) > 21 - total(playerHand):
-    print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("You win")
+#
+# #게임 반복 루프시킨다
+# for _ in range(2):#_는 컴퓨터가 코드 컴파일할때 메모리를 조금 절약시켜준다
+#     dealCard(dealerHand)
+#     dealCard(playerHand)
+# #손에 카드가 제대로 들어갔는지 확인 용도
+# #print(dealerHand)
+# #print(playerHand)
+# while playerIn or dealerIn:#player랑 dealer가 들어와있다면
+#     print(f"Dealer에게는 {revealDealerHand()}와 x")
+#     print(f"당신은 {playerHand}를 가지고 있으며 전체 {total(playerHand)}이다.")
+#     if playerIn:#player input
+#         stayOrHit=input("1: Stay\n2: Hit\n")#string으로 input
+#     if total(dealerHand)>16:#dealer가 deck에서 하나 가져갈지 말지 결정
+#         dealerIn=False#dealer stay
+#     else:#dealer 손이 16보다 작다면 deck에서 카드 하나 가져간다
+#         dealCard(dealerHand)#deck에서 하나 가져간다
+#
+#     if stayOrHit=='1':#player가 1을 입력(stay)
+#         playerIn==False
+#     else:#player가 2을 입력(hit)
+#         dealCard(playerHand)#player가 deck에서 카드하나 가져간다.
+#     #승자 결정, player, dealer 중 누가 21이거나 넘어가면 루프에서 나간다
+#     if total(playerHand)>=21:
+#         break
+#     elif total(dealerHand)>=21:
+#         break
+# #--------------------------------------------------------------------------
+# #승자를 결정한다.
+# if total(playerHand)==21:
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("BLACKJACK")
+# elif total(dealerHand)==21:
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("Dealer Wins")
+# elif total(playerHand)>21:
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("Player Bust")
+# elif total(dealerHand)>21:
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("Dealer BUst")
+# #player랑 dealer 둘다 자리에 남는다면(stay), 21에 가장 가까운 사람이 승자가 된다.
+# elif 21 - total(dealerHand) < 21-total(playerHand):
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("Dealer Wins")
+# elif 21 - total(dealerHand) > 21 - total(playerHand):
+#     print(f"\n당신은 {playerHand}으로 21 달성했고 dealer는 {total(playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#     print("You win")

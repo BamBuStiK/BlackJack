@@ -1,9 +1,10 @@
+import blackjackinside
+import Betting_System
+
 class Display:
     def __init__(self):
-        self.d_card = []
-        self.p_card = []
-        self.b_coin = 0
-        self.coin = 100
+        self.d_card = blackjackinside.dealerHand
+        self.p_card = blackjackinside.playerHand
 
     def Get_line(self): # 선으로 경게를 나타낸다.
         buffer = ""
@@ -44,6 +45,7 @@ class Display:
 
 class Interface:
     def __init__(self):
+        self.Bet_sys = Betting_System.Bet_System()
         self.display = Display()
         self.game_stat = 0  # 게임이 진행되고 있는지 확인한다. 0일 때 : 게임 시작 전, 1일 때 : 게임 진행 중
         self.p_total = 0
@@ -57,9 +59,9 @@ class Interface:
         print("player:")
         self.display.setting_p_card()
         self.display.Get_line()
-        print("Betting Coin: "+str(self.display.b_coin))
+        print("Betting Coin: "+str(self.Bet_sys.game_money))
         self.display.Get_line()
-        print("Coins: "+str(self.display.coin))
+        print("Coins: "+str(self.Bet_sys.pocket_money))
         self.display.Get_line()
 
 
@@ -69,14 +71,18 @@ class Interface:
                 self.p_total = 0
                 self.d_total = 0
                 self.re_display("off")
-                c = input("Betting: ")
-                if int(self.display.coin) < int(c) <= 0:
-                    print("you don't have enough coin")
-                    break
-                else:
-                    self.display.coin -= int(c)
-                    self.display.b_coin += int(c)
+                self.Bet_sys.bet_money()
+                # c = input("Betting: ")
+                # if int(self.display.coin) < int(c) <= 0:
+                #     print("you don't have enough coin")
+                #     break
+                # else:
+                #     self.display.coin -= int(c)
+                #     self.display.b_coin += int(c)
                 self.game_stat = 1
+                for _ in range(2):  # _는 컴퓨터가 코드 컴파일할때 메모리를 조금 절약시켜준다
+                    blackjackinside.dealCard(blackjackinside.dealerHand)
+                    blackjackinside.dealCard(blackjackinside.playerHand)
                 # 딜러에게 카드 2장
                 # d_total에 카드2장의 값을 더한다
                 # 플레이어에게 카드 2장
@@ -96,24 +102,28 @@ class Interface:
                         # 딜러에게 카드 1장
                         # d_total에 카드1장의 값을 더한다
                     if self.p_total > self.d_total:     # player가 이겼을 때
-                        print("player win")
-                        self.display.coin += self.display.b_coin*2
-                        self.display.b_coin = 0
+                        self.Bet_sys.win_money()
+                        # print("player win")
+                        # self.display.coin += self.display.b_coin*2
+                        # self.display.b_coin = 0
                     elif self.p_total == self.d_total:  # player가 비겼을 때
-                        print("draw")
-                        self.display.coin += self.display.b_coin/2
-                        self.display.b_coin = 0
+                        self.Bet_sys.draw_money()
+                        # print("draw")
+                        # self.display.coin += self.display.b_coin/2
+                        # self.display.b_coin = 0
                     elif self.p_total < self.d_total:   # player가 졌을 때
-                        print("player lose")
-                        self.display.b_coin = 0
+                        self.Bet_sys.lose_money()
+                        # print("player lose")
+                        # self.display.b_coin = 0
                     self.game_stat = 0  # 게임을 다시 시작한다.
                 elif select == "2":     # hit
                     # 플레이어에게 카드를 1장
-                    print("")
+                    blackjackinside.dealCard(blackjackinside.playerHand)
                 elif select == "3":     # surrender
                     self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다.
-                    self.display.coin += self.display.b_coin/2
-                    self.display.b_coin = 0
+                    self.Bet_sys.lose_money()
+                    # self.display.coin += self.display.b_coin/2
+                    # self.display.b_coin = 0
                     self.game_stat = 0  # 게임을 다시 시작한다.
                 elif select == "4":
                     break
