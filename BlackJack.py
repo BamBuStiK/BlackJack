@@ -5,13 +5,13 @@ class Display:
         self.b_coin = 0
         self.coin = 100
 
-    def Get_line(self): # 선으로 경게를 나타낸다
+    def Get_line(self): # 선으로 경게를 나타낸다.
         buffer = ""
         for i in range(50):
             buffer += "-"
         print(buffer)
 
-    def setting_d_card(self, stat):   # 딜러의 카드를 나타낸다
+    def setting_d_card(self, stat):   # 딜러의 카드를 나타낸다.
         buffer1 = ""
         buffer2 = ""
         for i in range(len(self.d_card)):
