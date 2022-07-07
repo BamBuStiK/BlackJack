@@ -36,7 +36,7 @@ class bk:
             return self.dealerHand[0]
         elif len(self.dealerHand)>2:
             return self.dealerHand[0], self.dealerHand[1]
-
+    
     def check_bust(self, hand):
         total = self.total(hand)
         if total > 21:
