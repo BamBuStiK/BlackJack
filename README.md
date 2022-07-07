@@ -1,7 +1,7 @@
 # BlackJack
 # A game of BlackJack
 
-## this game will be coded in distributed formation
+## this game will be coded in Centeralized Workflow
 ## 역할분담:
 ## -오현택: 인터페이스
 ## -백동렬: 블랙잭
