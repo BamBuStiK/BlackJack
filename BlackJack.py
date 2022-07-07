@@ -111,7 +111,7 @@ class Interface:
                     # 플레이어에게 카드를 1장
                     print("")
                 elif select == "3":     # surrender
-                    self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다
+                    self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다.
                     self.display.coin += self.display.b_coin/2
                     self.display.b_coin = 0
                     self.game_stat = 0  # 게임을 다시 시작한다.
