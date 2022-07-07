@@ -34,19 +34,19 @@ class Bet_System: #커다란 베팅판. 베팅된 돈을 모아 두고, 승리�
 
     def win_money(self): #승리한 플레이어 지갑에 배당금 추가.
         self.pocket_money += self.game_money + self.game_money #승리시 얻는 금액은 베팅 금액으로 설정했습니다. 베팅했던 금액 + 승리시 얻는 금액.
-        print("${} 획득했습니다.".format(self.game_money))
+        print("${} 획득했습니다. pocket_money: ${}".format(self.game_money, self.pocket_money))
         self.game_money = 0 #게임머니 초기화
 
     def lose_money(self): #베팅액 초기화 및 플레이어가 얼마를 잃었는지 출력해줌.
-        print("${} 잃었습니다.".format(self.game_money))
+        print("${} 잃었습니다. pocket_money: ${}".format(self.game_money, self.pocket_money))
         self.game_money = 0
 
     def draw_money(self):
-        print("베팅 금액을 회수합니다.")
-        self.pocket_money += self.game_money
+        self.pocket_money += self.game_money / 2
+        print("무승부. 베팅 금액의 절반을 돌려받습니다. pocket_money: ${}".format(self.pocket_money))
         self.game_money = 0
 
-    #무승부일 경우, 게임 머니를 그대로 유지한 채 게임 이어가기 or 게임 머니를 초기화 시키고 새로운 게임하기.
+
 
 
 """딜러와 플레이어만 플레이하기 때문에 플레이어만 베팅을 하는 것으로 설정했습니다. 플레이어 승리 시 얻는 금액은 베팅 금액만큼 얻도록 
