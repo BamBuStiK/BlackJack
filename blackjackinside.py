@@ -31,29 +31,29 @@ while bk.playerIn or dealerIn:#player랑 dealer가 들어와있다면
         break
 #--------------------------------------------------------------------------
 #승자를 결정한다.
-if total(bk.playerHand)==21:
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk,playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("BLACKJACK")
-elif total(dealerHand)==21:
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
-    print("Dealer Wins")
-elif total(playerHand)>21:
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
-    print("Player Bust")
-elif (total(bk.dealerHand)>21) and (stayOrHit=='3'):
-    print(f"포기")
-elif (total(bk.dealerHand)>21) and (stayOrHit!='3'):
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(dealerHand)}을 달성했다.")
-    print("Dealer Bust")
+#if total(bk.playerHand)==21:
+#    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk,playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#   print("BLACKJACK")
+#elif total(dealerHand)==21:
+#   print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
+#   print("Dealer Wins")
+#elif total(playerHand)>21:
+#   print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
+#   print("Player Bust")
+#elif (total(bk.dealerHand)>21) and (stayOrHit=='3'):
+#   print(f"포기")
+#elif (total(bk.dealerHand)>21) and (stayOrHit!='3'):
+#   print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(dealerHand)}을 달성했다.")
+#   print("Dealer Bust")
 #player랑 dealer 둘다 자리에 남는다면(stay), 21에 가장 가까운 사람이 승자가 된다.
-elif (21 - total(bk.dealerHand) < 21-total(bk.playerHand)) and (stayOrHit=='3'):#surrender
-    print(f"당신은 포기했습니다. Dealer 승!")
-elif 21 - total(bk.dealerHand) > 21 - total(bk.playerHand):
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
-    print("You win")
-else:
-    print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
-    print("Dealer Wins")
+#elif (21 - total(bk.dealerHand) < 21-total(bk.playerHand)) and (stayOrHit=='3'):#surrender
+#   print(f"당신은 포기했습니다. Dealer 승!")
+#elif 21 - total(bk.dealerHand) > 21 - total(bk.playerHand):
+#   print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
+#   print("You win")
+#else:
+#   print(f"\n당신은 {bk.playerHand}으로 21 달성했고 dealer는 {total(bk.playerHand)}로 총 {total(bk.dealerHand)}을 달성했다.")
+#   print("Dealer Wins")
 #renew deck in deck
-for i in range(0, len(renewDeck)):
-    bk.deck[i]=renewDeck[i]
+#for i in range(0, len(renewDeck)):
+#   bk.deck[i]=renewDeck[i]
