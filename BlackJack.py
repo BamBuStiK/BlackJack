@@ -1,9 +1,10 @@
+import blackjackinside
+import Betting_System
+
 class Display:
     def __init__(self):
         self.d_card = []
         self.p_card = []
-        self.b_coin = 0
-        self.coin = 100
 
     def Get_line(self): # 선으로 경게를 나타낸다.
         buffer = ""
@@ -44,6 +45,7 @@ class Display:
 
 class Interface:
     def __init__(self):
+        self.Bet_sys = Betting_System.Bet_System()
         self.display = Display()
         self.game_stat = 0  # 게임이 진행되고 있는지 확인한다. 0일 때 : 게임 시작 전, 1일 때 : 게임 진행 중
         self.p_total = 0
@@ -57,9 +59,9 @@ class Interface:
         print("player:")
         self.display.setting_p_card()
         self.display.Get_line()
-        print("Betting Coin: "+str(self.display.b_coin))
+        print("Betting Coin: "+str(self.Bet_sys.game_money))
         self.display.Get_line()
-        print("Coins: "+str(self.display.coin))
+        print("Coins: "+str(self.Bet_sys.pocket_money))
         self.display.Get_line()
 
 
