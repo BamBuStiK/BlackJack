@@ -3,8 +3,8 @@ import Betting_System
 
 class Display:
     def __init__(self):
-        self.d_card = []
-        self.p_card = []
+        self.d_card = blackjackinside.dealerHand
+        self.p_card = blackjackinside.playerHand
 
     def Get_line(self): # 선으로 경게를 나타낸다.
         buffer = ""
@@ -80,6 +80,9 @@ class Interface:
                 #     self.display.coin -= int(c)
                 #     self.display.b_coin += int(c)
                 self.game_stat = 1
+                for _ in range(2):  # _는 컴퓨터가 코드 컴파일할때 메모리를 조금 절약시켜준다
+                    blackjackinside.dealCard(blackjackinside.dealerHand)
+                    blackjackinside.dealCard(blackjackinside.playerHand)
                 # 딜러에게 카드 2장
                 # d_total에 카드2장의 값을 더한다
                 # 플레이어에게 카드 2장
@@ -115,7 +118,7 @@ class Interface:
                     self.game_stat = 0  # 게임을 다시 시작한다.
                 elif select == "2":     # hit
                     # 플레이어에게 카드를 1장
-                    print("")
+                    blackjackinside.dealCard(blackjackinside.playerHand)
                 elif select == "3":     # surrender
                     self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다.
                     self.Bet_sys.lose_money()
