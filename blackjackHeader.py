@@ -25,36 +25,42 @@ class bk:
                 if total>21:
                     if aceCount==1:
                         total-=10#-11+1
+                        aceCount=0
                     elif aceCount==0:
                         total+=0
                     else:
                         for i in aceCount:
                             total-=10#-11+1
+                        aceCount=0
                             
             elif card in face:#facecards
                 total+=10
                 if total>21:
                     if aceCount==1:
                         total-=10
+                        aceCount=0
                     elif aceCount==0:
                         total+=0
                     else:
                         for i in aceCount:
                             total-=10
+                        aceCount=0
 
             else:#(1)ace는 특별하게 처리
                 aceCount+=1
                 aceCheck=total+11
-                if aceCheck> 21:#bust
+                if aceCheck > 21:#bust
                     if aceCount==1:
                         total+=1
-                    else:    
+                        aceCount=0
+                    else:
                         for i in aceCount:
-                            total-=11
-                            total+=1
-                        total+=11
+                            total-=10
+                        total+=10
+                        aceCount=0
                 else:#ace
                     total+=11
+        print(total)
         return total
 #승자를 결정한다
 #give dealer some intelligence
