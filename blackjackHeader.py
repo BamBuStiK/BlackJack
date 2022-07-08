@@ -17,6 +17,7 @@ class bk:
     def total(self, turn):
     #얼굴 있는 카드들은 값을 다르게 쳐야한다, ace=10, ace(bust)=1 등등
         total = 0
+        aceCount=0
         face = ['J','K','Q']#ace는 1 아니면 11일수도 있기 때문에 제외시켰다.(1)
         for card in turn:
             if card in range(1,11):#1~10
@@ -24,8 +25,17 @@ class bk:
             elif card in face:#facecards
                 total+=10
             else:#(1)ace는 특별하게 처리
-                if total+11 > 21:#bust
-                    total+=1
+                aceCount+=1
+                aceCheck=total+11
+                print(aceCount)
+                if aceCheck> 21:#bust
+                    if aceCount==1:
+                        total+=1
+                    else:    
+                        for i in aceCount:
+                            total-=11
+                            total+=1
+                        total+=11
                 else:#ace
                     total+=11
         return total
