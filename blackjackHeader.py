@@ -60,7 +60,6 @@ class bk:
                         aceCount=0
                 else:#ace
                     total+=11
-        print(total)
         return total
 #승자를 결정한다
 #give dealer some intelligence
