@@ -10,7 +10,7 @@ class Bet_System: #커다란 베팅판. 베팅된 돈을 모아 두고, 승리�
             
             if self.pocket_money == 0:
                 print("돈을 탕진했습니다! 금액을 충전하세요.")
-                break
+                return False
                 
             elif amount > self.pocket_money:
                 print("돈이 모자랍니다! 금액을 다시 입력해주세요.")
@@ -19,7 +19,7 @@ class Bet_System: #커다란 베팅판. 베팅된 돈을 모아 두고, 승리�
                 self.pocket_money -= amount
                 self.game_money += amount #플레이어가 베팅한 금액을 베팅시스템 게임머니에 저장.
                 print("game_money: ${} pocket_money: ${}".format(amount, self.pocket_money))
-                break
+                return True
 
     def win_money(self): #승리한 플레이어 지갑에 배당금 추가.
         self.pocket_money += self.game_money + self.game_money #승리시 얻는 금액은 베팅 금액으로 설정했습니다. 베팅했던 금액 + 승리시 얻는 금액.
@@ -42,5 +42,6 @@ class Bet_System: #커다란 베팅판. 베팅된 돈을 모아 두고, 승리�
 설정했고 필요하다면 추후에 카드에 따라 베팅 금액이 달라지는 기능도 넣겠습니다. 추가나 수정이 필요한 기능들이 있다면 말씀해주세요!"""
 
 #B = Bet_System()
+
 
 
