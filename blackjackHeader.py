@@ -36,3 +36,49 @@ class bk:
             return self.dealerHand[0]
         elif len(self.dealerHand)>2:
             return self.dealerHand[0], self.dealerHand[1]
+    
+    def check_bust(self, hand):
+        total = self.total(hand)
+        if total > 21:
+            return True
+        return False
+
+    def discriminate(self):
+        if self.check_bust(self.playerHand):
+            print("player bust")
+            return 0
+        elif self.check_bust(self.dealerHand):
+            print("dealer bust")
+            return 1
+        elif self.check_bust(self.playerHand) and self.check_bust(self.dealerHand):
+            print("draw")
+            return 2
+        else:
+            if self.total(self.playerHand) > self.total(self.dealerHand):
+                print("player win")
+                return 3
+            elif self.total(self.playerHand) < self.total(self.dealerHand):
+                print("player lose")
+                return 4
+            elif self.total(self.playerHand) == self.total(self.dealerHand):
+                print("draw")
+                return 5
+
+    def refill_deck(self):
+        self.deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6,
+                     7, 8, 9, 10,
+                     'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A']
+        self.playerHand = []
+        self.dealerHand = []
+        # if self.dealerHand:
+        #     for i in range(len(self.dealerHand)):
+        #         tem = self.dealerHand[i]
+        #         self.deck.append(tem)
+        #         self.dealerHand.remove(tem)
+        # if self.playerHand:
+        #     for i in range(len(self.playerHand)):
+        #         tem = self.playerHand[i]
+        #         self.deck.append(tem)
+        #         self.playerHand.remove(tem)
+        print("refill deck")
+
