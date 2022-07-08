@@ -64,9 +64,13 @@ class Interface(Display):
     def launch(self):   # 게임이 끝날 때까지 진행한다
         while 1:
             if self.game_stat == 0:
+                if self.Bet_sys.pocket_money == 0:
+                    print("돈을 탕진했습니다! 금액을 충전하세요.")
+                    break
                 time.sleep(1)
                 self.re_display("off")
-                self.Bet_sys.bet_money()
+                if not self.Bet_sys.bet_money():
+                    break
                 # c = input("Betting: ")
                 # if int(self.display.coin) < int(c) <= 0:
                 #     print("you don't have enough coin")
