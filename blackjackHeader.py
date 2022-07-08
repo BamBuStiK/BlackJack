@@ -21,33 +21,27 @@ class bk:
         face = ['J','K','Q']#ace는 1 아니면 11일수도 있기 때문에 제외시켰다.(1)
         for card in turn:
             if card in range(1,11):#1~10
-                aceCheck=total+11
-                if aceCheck>21:
-                    if aceCount==1:
-                        total-=11
-                        total+=1
-                    elif aceCount==0:
-                        total+=0
-                    else:
-                        for i in aceCount:
-                            total-=11
-                            total+=1
-                        total+=11
                 total+=card
-            elif card in face:#facecards
-                aceCheck=total+11
-                if aceCheck>21:
+                if total>21:
                     if aceCount==1:
-                        total-=11
-                        total+=1
+                        total-=10#-11+1
                     elif aceCount==0:
                         total+=0
                     else:
                         for i in aceCount:
-                            total-=11
-                            total+=1
-                        total+=11
+                            total-=10#-11+1
+                            
+            elif card in face:#facecards
                 total+=10
+                if total>21:
+                    if aceCount==1:
+                        total-=10
+                    elif aceCount==0:
+                        total+=0
+                    else:
+                        for i in aceCount:
+                            total-=10
+
             else:#(1)ace는 특별하게 처리
                 aceCount+=1
                 aceCheck=total+11
