@@ -24,7 +24,7 @@ class bk:
             elif card in face:#facecards
                 total+=10
             else:#(1)ace는 특별하게 처리
-                if total > 11:#bust
+                if total+11 > 21:#bust
                     total+=1
                 else:#ace
                     total+=11
