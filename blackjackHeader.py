@@ -102,15 +102,6 @@ class bk:
                      'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A', 'J', 'Q', 'K', 'A']
         self.playerHand = []
         self.dealerHand = []
-        # if self.dealerHand:
-        #     for i in range(len(self.dealerHand)):
-        #         tem = self.dealerHand[i]
-        #         self.deck.append(tem)
-        #         self.dealerHand.remove(tem)
-        # if self.playerHand:
-        #     for i in range(len(self.playerHand)):
-        #         tem = self.playerHand[i]
-        #         self.deck.append(tem)
-        #         self.playerHand.remove(tem)
+
         print("refill deck")
 
