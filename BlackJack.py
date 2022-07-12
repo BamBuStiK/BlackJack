@@ -57,7 +57,7 @@ class Interface(Display):
         self.display.Get_line()
         print("game_money: $"+str(self.Bet_sys.game_money))
         self.display.Get_line()
-        print("pocket_money: $"+str(self.Bet_sys.pocket_money))
+        print("pocket_money: $"+str(int(self.Bet_sys.pocket_money)))
         self.display.Get_line()
 
 
@@ -71,21 +71,13 @@ class Interface(Display):
                 self.re_display("off")
                 if not self.Bet_sys.bet_money():
                     break
-                # c = input("Betting: ")
-                # if int(self.display.coin) < int(c) <= 0:
-                #     print("you don't have enough coin")
-                #     break
-                # else:
-                #     self.display.coin -= int(c)
-                #     self.display.b_coin += int(c)
+
                 self.game_stat = 1
                 for _ in range(2):  # _는 컴퓨터가 코드 컴파일할때 메모리를 조금 절약시켜준다
                     self.bk.dealCard(self.bk.dealerHand)
                     self.bk.dealCard(self.bk.playerHand)
                 # 딜러에게 카드 2장
-                # d_total에 카드2장의 값을 더한다
                 # 플레이어에게 카드 2장
-                # p_total에 카드2장의 값을 더한다
             else:
                 if self.bk.check_bust(self.bk.playerHand):  # 딜러 혹은 플레이어가 버스트인 경우 : 배팅된 코인을 이긴 사람에게 추가한다
                     self.bk.discriminate()
@@ -110,7 +102,6 @@ class Interface(Display):
                         time.sleep(1)
                         self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다
                         # 딜러에게 카드 1장
-                        # d_total에 카드1장의 값을 더한다
                     time.sleep(1)
                     check_result = self.bk.discriminate()
                     if check_result == 0:
@@ -136,8 +127,6 @@ class Interface(Display):
                     time.sleep(1)
                     self.re_display("on")   # 딜러의 카드를 오픈한 상태로 나타낸다.
                     self.Bet_sys.lose_money()
-                    # self.display.coin += self.display.b_coin/2
-                    # self.display.b_coin = 0
                     self.bk.refill_deck()
                     self.game_stat = 0  # 게임을 다시 시작한다.
                     continue
